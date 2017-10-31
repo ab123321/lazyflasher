@@ -9,10 +9,6 @@ console=$(cat /tmp/console)
 cd "$tmp"
 . config.sh
 
-chmod -R 755 "$bin"
-rm -rf "$ramdisk" "$split_img"
-mkdir "$ramdisk"
-
 print() {
 	if [ "$1" ]; then
 		echo "ui_print - $1" > "$console"
@@ -29,6 +25,11 @@ abort() {
 	}
 	exit 1
 }
+
+[ -f "$bin" ] || abort "Unsupported CPU!"
+chmod -R 755 "$bin"
+rm -rf "$ramdisk" "$split_img"
+mkdir "$ramdisk"
 
 ## start install methods
 
