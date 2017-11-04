@@ -26,7 +26,7 @@ abort() {
 	exit 1
 }
 
-[ -f "$bin" ] || abort "Unsupported CPU!"
+[ -d "$bin" ] || abort "Unsupported CPU!"
 chmod -R 755 "$bin"
 rm -rf "$ramdisk" "$split_img"
 mkdir "$ramdisk"
